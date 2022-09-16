@@ -1,0 +1,126 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+
+int main()
+{
+	//共三种结构：顺序结构、选择结构、循环结构
+	//if语句1(选择结构)：
+	int a = 0;
+	printf("Please enter your age ：");
+	scanf("%d", &a);
+	if (a >= 18)
+	{
+		printf("You have been dault !\n");
+	}
+	else
+	{
+		printf("You are under age !\n");
+	}
+	
+	//if语句2：
+	int b = 0;
+	printf("Please enter your age ：");
+	scanf("%d", &b);
+	if (b >= 18)
+	{
+		if (b >= 18 && b < 28)
+		{
+			printf("You are young !\n");
+		}
+		else if (b >= 28 && b < 50)
+		{
+			printf("You are middle-aged !");
+		}
+		else if (b >= 50 && b < 90)
+		{
+			printf("You are a senior citizen !");
+		}
+		else
+		{
+			printf("You are very long life !");
+		}
+	}
+	else
+	{
+		printf("You are under age !\n");
+	}
+
+	//悬空else：
+	printf("Source code ：\n");
+	int c = 0;
+	int d = 2;
+	if (c == 1)
+		if (d == 2)
+			printf("Anazing !\n");
+	else
+		printf("Interesting !\n");
+	//以上代码书写风格差，不能很好的使用代码块{}，if/else语句遵从就近原则，即else自动与if("d==2")对齐成对，当if("c==1")判断为假时，自动跳过后两个if-else
+	//以上代码应修改为：
+	printf("Output after modification :\n");
+	int e = 0;
+	int f = 0;
+	if (e == 1)
+	{
+		if (f == 2) 
+		{
+			printf("Amazing !\n");
+		}
+	}
+	else 
+	{
+		printf("Interesting !\n");
+	}
+
+	//更好的代码风格：
+	printf("Before ：\n");
+	int g = 0;
+	printf("Please enter the value of g ：");
+	scanf("%d", &g);
+	printf("The value of g is %d now .\n", g);
+	if (g = 5) 
+	{
+		printf("Yes but worse ...\n");
+	}
+	else 
+	{
+		printf("No and worse ...\n");
+	}
+	printf("The value of g is %d finally .\n", g);
+	//以上代码风格较差的原因为：if语句后的判断中错误的将"=="写成了"="，以至于if语句永远判断为真——给g赋值为5后进行判断，5=5永远为真
+	//为避免以上问题，应修改为以下风格较好的代码：
+	printf("After ：\n");
+	int h = 0;
+	printf("Please enter the value of h ：");
+	scanf("%d", &h);
+	printf("The value of h is %d now .\n", h);
+	if (5 == h)
+	{
+		printf("Yes and better ! ! !\n");
+	}
+	else
+	{
+		printf("No but better ! ! !\n");
+	}
+	printf("The value of h is %d finally .\n", h);
+	//将if语句后的判断内容中的变量写在后方，符号为"=="即符号正确则程序正常运行，若符号为"="即符号使用错误则会报错，避免了"程序能跑，结果错误"一类情况的出现
+	//可且不限于使用在此处，凡是将常量与变量进行比较时，均可以将常量写在前方而将变量写在后方来对代码风格进行优化
+
+	//练习-判断一个数是否为奇数，若是则将其输出：
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	printf("Please enter the number ：");
+	scanf("%d", &i);
+	j = i % 2;
+	if (1 == j) 
+	{
+		printf("%d is an odd number !\n", i);
+	}
+	else 
+	{
+		printf("%d is an even number !\n", i);
+	}
+
+	return 0;
+}
